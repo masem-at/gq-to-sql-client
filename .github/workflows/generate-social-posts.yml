@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   generate_social_posts:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repo
