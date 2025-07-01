@@ -38,7 +38,7 @@ jobs:
           "## gq-to-sql-client $version (Dev Post)" | Out-File -FilePath $outputFile -Encoding utf8
 
           $json = @{
-            model = "gpt-4"
+            model = "gpt-3.5-turbo"
             messages = @(@{ role = "user"; content = $prompt })
             temperature = 0.7
           } | ConvertTo-Json -Depth 3
@@ -65,7 +65,7 @@ jobs:
           "## gq-to-sql-client $version (LinkedIn Post)" | Out-File -FilePath $outputFile -Encoding utf8
 
           $json = @{
-            model = "gpt-4"
+            model = "gpt-3.5-turbo"
             messages = @(@{ role = "user"; content = $prompt })
             temperature = 0.5
           } | ConvertTo-Json -Depth 3
