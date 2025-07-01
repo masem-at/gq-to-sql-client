@@ -41,7 +41,7 @@ describe('gqClient', () => {
         expect(q).toBe("$filter=age gt 18 and country eq 'AT'");
     });
 
-    it('handles $expand with $select', () => {
+    it('Handles $expand with $select', () => {
         const q = gqClient()
             .expand('orders', { select:'id,date' })
             .toString();
