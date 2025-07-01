@@ -1,13 +1,12 @@
-name: Run Tests
+name: Run Tests1
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: [self-hosted, Windows, X64]
 
     steps:
-      - name: Print basic info
-        run: echo "✅ Runner is working!"
+      - name: Echo test
+        run: echo "✅ Hello from self-hosted runner"
