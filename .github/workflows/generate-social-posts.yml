@@ -19,10 +19,12 @@ jobs:
 
       - name: Get release version
         id: version
+        shell: bash
         run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_VERSION
 
       - name: Generate fun dev post
         id: devpost
+        shell: bash
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
@@ -44,6 +46,7 @@ jobs:
 
       - name: Generate LinkedIn post
         id: linkedinpost
+        shell: bash
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
