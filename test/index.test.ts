@@ -49,7 +49,7 @@ describe('gqClient', () => {
         expect(q).toBe(`$expand=orders($select=id,date)`);
     });
 
-    it('handles $apply (groupby + aggregate)', () => {
+    it('Handles $apply (groupby + aggregate)', () => {
         const q = gqClient()
             .apply(['country'], [['age', 'avg', 'avg_age']])
             .toString();
