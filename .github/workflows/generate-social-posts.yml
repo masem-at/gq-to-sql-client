@@ -1,0 +1,71 @@
+# .github/workflows/generate-social-posts.yml
+name: Generate Social Post Drafts
+
+on:
+    release:
+        types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  generate_social_posts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Get release version
+        id: version
+        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_VERSION
+
+      - name: Generate fun dev post
+        id: devpost
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          PROMPT="Write a professional, concise LinkedIn-style post for the release of gq-to-sql-client version $VERSION. Summarize the technical improvements and include a clear call to action with a link to the GitHub release, a link to https://masem.at and with hashtags like #TypeScript or #devtools."
+
+          echo "## gq-to-sql-client $VERSION (LinkedIn Post)" > social-drafts/v$VERSION/linkedin-post.md
+
+          RESPONSE=$(curl https://api.openai.com/v1/chat/completions \
+            -s -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d '{
+              "model": "gpt-4",
+              "messages": [{"role": "user", "content": "'"$PROMPT"'"}],
+              "temperature": 0.5
+            }' | jq -r '.choices[0].message.content')
+
+          echo "$RESPONSE" >> social-drafts/v$VERSION/linkedin-post.md
+
+      - name: Generate LinkedIn post
+        id: linkedinpost
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          PROMPT="Write a professional, concise LikedIn-style post for the release of gq-to-sql-client version $VERSION. Summarize the technical improvements and include a clear call to action with a link to the github release and to https://masem.at and also with hashtags."
+
+          echo "## gq-to-sql-client $VERSION (LinkedIn Post)" > social-drafts/v$VERSION/linkedin-post-md
+
+          RESPONSE=$(curl https://api.openai.com/v1/chat/completions \
+            -s -H "Content-Type: application/json" \
+          -H "Authorization Bearer $OPENAI_API_KEY" \
+          -d '{
+            "model":"gpt-4",
+            "messages":[{"role":"user","content":"'"$PROMPT"'"}],
+            "temperature":0.5
+          }' | jq -r '.choices[0].message.content')
+
+          echo "$RESPONSE" >> socials-drafts/v$VERSION/linkedin-post.md
+
+      - name: Commit social post drafts
+        run: |
+          git config --global user.name "masem-bot"
+          git config --global user.email "actions@github.com"
+          git add social-drafts/
+          git commit -m "🤖  Social post drafts for v${{ steps.version.outputs.version }}"
+          git push
