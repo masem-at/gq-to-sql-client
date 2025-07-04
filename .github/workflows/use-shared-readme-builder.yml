@@ -6,4 +6,4 @@ on:
 
 jobs:
   call-shared-workflow:
-    uses: masem-at/masem-github-workflows/.github/workflows/generate-readme.yml@main
+    uses: masem-at/masem-github-workflows/generate-readme.yml@main
