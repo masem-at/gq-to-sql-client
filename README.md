@@ -1,34 +1,33 @@
-# Fluent TypeScript Client for Graph-style Query Strings
+# Project Name: gq-to-sql-client
 
-This TypeScript project provides a fluent client for building Graph-style query strings that are compatible with gq-to-sql.
+## Project Intro
+This project is a Fluent TypeScript client designed for constructing Graph-style query strings that are compatible with gq-to-sql. It provides a convenient way to build complex queries for interacting with databases using TypeScript.
 
-## Features
+## Features List
+- Build query strings with fluent syntax
+- Support for selecting specific fields
+- Filtering data based on conditions
+- Ordering query results
+- Limiting the number of results with top and skip
+- Expanding related tables
+- Applying groupby and aggregate functions
+- Generating SQL-compatible query strings
 
-- Build query strings with fluent API methods
-- Support for selecting, filtering, ordering, pagination, expansion, and aggregation
-- Easily convert the query object to a query string
-- Compatible with gq-to-sql for seamless integration
-
-## Installation
-
-To use this TypeScript client in your project, you can install it via npm:
-
+## Installation Instructions
+To install the gq-to-sql-client package, you can use npm or yarn:
 ```bash
-npm install <package-name>
+npm install gq-to-sql-client
+# or
+yarn add gq-to-sql-client
 ```
 
 ## Code Example
-
-You can use the provided functions to construct complex query strings in a fluent manner. Here's an example of how you can use this client:
-
-```typescript
-import { gqClient } from './index';
+```ts
+import { gqClient } from 'gq-to-sql-client';
 
 const query = gqClient()
   .select('name, age')
   .filter('age', '>', 18)
-  .and()
-  .filter('city', '=', 'New York')
   .orderby('name')
   .top(10)
   .toString();
@@ -37,11 +36,9 @@ console.log(query);
 ```
 
 ## Usage
-
 ![Usage Image](./assets/usage.svg)
 
 ## Links
-
+- [Website](https://masem.at/projects/gq-to-sql-client)
+- [Github Repository](https://github.com/masem-at/gq-to-sql-client)
 - [masem.at](https://masem.at)
-- [GitHub Repository](https://github.com)
-- [Project Page](https://projectWebsite)
