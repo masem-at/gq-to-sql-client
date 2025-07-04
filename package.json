@@ -5,6 +5,8 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repoUrl": "https://github.com/masem-at/gq-to-sql-client",
+  "websiteUrl": "https://masem.at/projects/gq-to-sql-client",
   "files": [
     "dist/"
   ],
