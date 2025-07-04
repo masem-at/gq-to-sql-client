@@ -10,4 +10,5 @@ permissions:
 jobs:
   call-shared-workflow:
     uses: masem-at/masem-github-workflows/.github/workflows/generate-readme.yml@main
-
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
