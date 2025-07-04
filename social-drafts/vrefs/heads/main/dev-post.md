@@ -1,2 +1,0 @@
-## gq-to-sql-client refs/heads/main (Dev Post)
-🚀 Just dropped the latest version of gq-to-sql-client, and it's hotter than a freshly brewed cup of coffee! ☕️ Now with new features like seamless integration with TypeScript and enhanced dev tools for all you code wizards out there. Get your hands on it now and level up your SQL game! 🔥💻 Check it out at [project link] #TypeScript #devtools #SQLNinjas #CodeMasters #UpgradeYourDevLife

@@ -5,8 +5,6 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repoUrl": "https://github.com/masem-at/gq-to-sql-client",
-  "websiteUrl": "https://masem.at/projects/gq-to-sql-client",
   "files": [
     "dist/"
   ],
@@ -29,5 +27,11 @@
     "c8": "^10.1.3",
     "typescript": "^5.0.0",
     "vitest": "^3.2.4"
+  },
+  "masemBot": {
+    "name":"gq-to-sql-client",
+    "description":"Fluent TypeScript client for building Graph-style query strings compatible with gq-to-sql",
+    "repoUrl": "https://github.com/masem-at/gq-to-sql-client",
+    "websiteUrl": "https://masem.at/projects/gq-to-sql-client"
   }
 }
