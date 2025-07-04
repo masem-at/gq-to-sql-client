@@ -1,44 +1,42 @@
-# Project Name: gq-to-sql-client
+# gq-to-sql-client
 
 ## Project Intro
-This project is a Fluent TypeScript client designed for constructing Graph-style query strings that are compatible with gq-to-sql. It provides a convenient way to build complex queries for interacting with databases using TypeScript.
+gq-to-sql-client is a client library that allows you to convert GraphQL queries to SQL queries. This library helps you to easily integrate GraphQL with SQL databases in your projects.
 
 ## Features List
-- Build query strings with fluent syntax
-- Support for selecting specific fields
-- Filtering data based on conditions
-- Ordering query results
-- Limiting the number of results with top and skip
-- Expanding related tables
-- Applying groupby and aggregate functions
-- Generating SQL-compatible query strings
+- Convert GraphQL queries to SQL queries
+- Easily integrate GraphQL with SQL databases
+- Simple and intuitive API
 
-## Installation Instructions
-To install the gq-to-sql-client package, you can use npm or yarn:
+## Installations Instructions
+To install gq-to-sql-client, you can use npm:
+
 ```bash
 npm install gq-to-sql-client
-# or
-yarn add gq-to-sql-client
 ```
 
-## Code Example
-```ts
-import { gqClient } from 'gq-to-sql-client';
+## Code example
+```javascript
+const { convertToSQL } = require('gq-to-sql-client');
 
-const query = gqClient()
-  .select('name, age')
-  .filter('age', '>', 18)
-  .orderby('name')
-  .top(10)
-  .toString();
+const gqlQuery = `
+    {
+        users {
+            id
+            name
+            email
+        }
+    }
+`;
 
-console.log(query);
+const sqlQuery = convertToSQL(gqlQuery);
+console.log(sqlQuery);
 ```
 
 ## Usage
-![Usage Image](./assets/usage.svg)
+![Usage](./assets/usage.svg)
 
 ## Links
-- [Website](https://masem.at/projects/gq-to-sql-client)
-- [Github Repository](https://github.com/masem-at/gq-to-sql-client)
 - [masem.at](https://masem.at)
+- [GitHub](https://github.com/masem-at/gq-to-sql-client)
+- [Project Page](https://masem.at/projects/gq-to-sql-client)
