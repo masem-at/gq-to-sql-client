@@ -1,0 +1,9 @@
+# .github/workflows/use-shared-readme-builder.yml
+name: Use Shared README Builder
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  call-shared-workflow:
+    uses: masem-github-workflows/.github/workflows/generate-readme.yml@main
